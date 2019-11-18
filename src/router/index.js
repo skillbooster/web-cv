@@ -1,8 +1,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueAxios from 'vue-axios';
+import axios from 'axios';
+import NProgress from 'nprogress';
+
 import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
+Vue.use(VueAxios, axios);
 
 const routes = [
   {
@@ -24,6 +29,17 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeResolve((to, from, next) => {
+  if (to.name) {
+    NProgress.start();
+  }
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
 });
 
 export default router;

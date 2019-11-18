@@ -1,14 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <topnav></topnav>
+    <transition name="fade">
+      <router-view id="main-content"/>
+    </transition>
   </div>
 </template>
 
+<script>
+import Vue from 'vue';
+
+import TopNav from './components/MainTopNav.vue';
+
+export default Vue.extend({
+  name: 'app',
+  components: {
+    topnav: TopNav,
+  },
+});
+</script>
+
 <style lang="scss">
+@import './styles/_variables.scss';
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,16 +36,16 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+#main-content {
+  height: calc(100% - $top-nav-height);
+  padding-top: $top-nav-height;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0;
+  transition: opacity 0s;
 }
 </style>

@@ -10,8 +10,12 @@
             class="router-link">Skills</router-link>
         </li>
         <li @click="pagePick($event)">
-          <router-link :to="{ name: 'about' }"
+          <router-link :to="{ name: 'contact' }"
             class="router-link">Leave a mark</router-link>
+        </li>
+        <li @click="pagePick($event)">
+          <router-link :to="{ name: 'contactsList' }"
+            class="router-link">Contacts List</router-link>
         </li>
       </ul>
       <div class="burger"

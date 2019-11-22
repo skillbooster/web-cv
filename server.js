@@ -7,7 +7,7 @@ const express = require('express'),
     mongoose = require('mongoose'),
     config = require('./config/DB');
 
-    //const eventRoutes = require('./expressRoutes/eventRoutes');
+    const contactRoutes = require('./expressRoutes/contactRoutes');
 
     mongoose.Promise = global.Promise;
     mongoose.connect(config.DB).then(
@@ -21,6 +21,7 @@ const express = require('express'),
     app.use(cors());
 
     //app.use('/events', eventRoutes);
+    app.use('/contacts', contactRoutes);
 
     var port = process.env.PORT || 4000;
 

@@ -30,12 +30,18 @@ export default {
       currentIndex: 0,
     };
   },
+  mounted() {
+    this.startSlide();
+  },
   computed: {
     pickedSkill() {
       return this.skills[Math.abs(this.currentIndex) % this.skills.length];
     },
   },
   methods: {
+    startSlide() {
+      setInterval(this.nextSkill, 4000);
+    },
     previousSkill() {
       this.currentIndex -= 1;
       console.log(this.currentIndex);

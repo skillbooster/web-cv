@@ -34,7 +34,7 @@ export default Vue.extend({
   },
   methods: {
     addContact() {
-      this.contact.date = new Date().getDate();
+      this.contact.date = new Date().toISOString().split('T')[0].replace(/-/g, '/');
       const uri = 'http://localhost:4000/contacts/add';
       this.axios.post(uri, this.contact).then(response => console.log(response.data));
     },
@@ -43,5 +43,13 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+input {
+  max-width: 500px;
+}
 </style>

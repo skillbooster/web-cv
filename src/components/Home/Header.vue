@@ -4,8 +4,9 @@
       @click="previousSkill">&#171;</div>
     <div class="slider">
       <transition-group name="fade" tag="div">
-        <div v-for="i in [currentIndex]"
-          :key="i" class="slider-item">
+        <div v-for="index in [currentIndex]"
+          :key="index" class="slider-item"
+          @click="skillCloseUp(index)">
           <img :src="pickedSkill.img"
             class="slider-img"/>
           <p>{{ pickedSkill.name }}</p>
@@ -43,12 +44,17 @@ export default {
       this.currentIndex += 1;
       console.log(this.currentIndex);
     },
+    skillCloseUp(skillIndex) {
+      this.$emit('skill-open', skillIndex);
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import '@/styles/_variables.scss';
+
 .header {
   height: 100vh;
   display: grid;
@@ -118,8 +124,8 @@ export default {
 }
 
 .slider-img {
-  height: 100px;
-  width: 100px;
+  height: calc(20px + 34vmin);
+  width: calc(20px + 34vmin);
   border-radius: 50%;
 }
 
@@ -131,6 +137,9 @@ export default {
   background-color: bisque;
   font-size: 150%;
   font-weight: bold;
+  position: -webkit-sticky;
+  position: sticky;
+  top: $top-nav-height;
 }
 
 .description p {

@@ -7,7 +7,7 @@
         :class="{ 'top-nav-links-active': isTopNavActive }">
         <li @click="pagePick($event)">
           <router-link to="/"
-            class="router-link">Home</router-link>
+            class="router-link">Skills</router-link>
         </li>
         <li @click="pagePick($event)">
           <router-link :to="{ name: 'about' }"

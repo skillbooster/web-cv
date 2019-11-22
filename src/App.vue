@@ -23,6 +23,10 @@ export default Vue.extend({
 <style lang="scss">
 @import './styles/_variables.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   padding: 0;
   margin: 0;

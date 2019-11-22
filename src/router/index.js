@@ -6,6 +6,8 @@ import NProgress from 'nprogress';
 
 import Home from '../views/Home.vue';
 
+import '../../node_modules/nprogress/nprogress.css';
+
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
 

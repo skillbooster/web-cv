@@ -33,11 +33,6 @@ export default Vue.extend({
   components: {
     ExpCloseUpSkillTable,
   },
-  created() {
-    if (this.expData) {
-      console.log(this.expData);
-    }
-  },
   methods: {
     closeEvent() {
       this.$emit('exp-close');

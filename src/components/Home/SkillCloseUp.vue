@@ -27,11 +27,6 @@ export default Vue.extend({
       backgroundClass: 'popUpModalBack',
     };
   },
-  created() {
-    if (this.skillData) {
-      console.log(this.skillData);
-    }
-  },
   methods: {
     closeEvent() {
       this.$emit('skill-close');
